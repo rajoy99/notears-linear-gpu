@@ -1,6 +1,6 @@
 Notears PyTorch
 
-![Notears PyTorch Logo](logo_NTLGPU.png)
+<img src="logo_NTLGPU.png" alt="Notears PyTorch Logo" width="40"/>
 A PyTorch implementation of the NOTEARS algorithm (Non-parametric Optimization for Structure Learning) for causal discovery.
 
 This package provides a continuous optimization approach to learning DAGs (Directed Acyclic Graphs) from data, harnessing the power of GPUs to accelerate the learning process.
@@ -11,8 +11,12 @@ Note: The original NOTEARS implementation is CPU only.
 
 You can install this package directly from PyPi:
 
+```
+
 pip install notears-pytorch
 
+
+```
 
 🚀 Usage
 
