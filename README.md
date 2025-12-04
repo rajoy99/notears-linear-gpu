@@ -5,7 +5,7 @@ A PyTorch implementation of the NOTEARS algorithm (Non-parametric Optimization f
 
 This package provides a continuous optimization approach to learning DAGs (Directed Acyclic Graphs) from data, harnessing the power of GPUs to accelerate the learning process.
 
-Note: The original NOTEARS implementation is CPU only.
+Note: The original NOTEARS Linear implementation is CPU only.
 
 📦 Installation
 
