@@ -1,5 +1,6 @@
 Notears PyTorch
 
+![Notears PyTorch Logo](logo_NTLGPU.png)
 A PyTorch implementation of the NOTEARS algorithm (Non-parametric Optimization for Structure Learning) for causal discovery.
 
 This package provides a continuous optimization approach to learning DAGs (Directed Acyclic Graphs) from data, harnessing the power of GPUs to accelerate the learning process.
@@ -17,11 +18,9 @@ pip install notears-pytorch
 
 Below is a basic example of how to use the linear NOTEARS algorithm.
 
-
+```
 from notears_pytorch import notears_linear
 
-# 1. Generate or load your data
-# X = np.random.randn(n_samples, d_nodes) ...
 
 # 2. Run optimization
 # Returns a binary adjacency matrix where B[i, j] = 1 implies i -> j
@@ -31,26 +30,36 @@ print("Estimated Adjacency Matrix:")
 print(adj_matrix)
 
 
-📚 API
+```
 
-notears_linear(X, lambda1=0.1, ...)
+📚 API Description 
 
-Solves the optimization problem to find the DAG structure.
+### `notears_linear`
 
-X (np.ndarray):
-The data matrix of shape (n, d), where n is the number of samples and d is the number of nodes/variables.
+```python
+notears_linear(X, lambda1=0.1, rho_init=1.0, alpha_init=0.0, 
+               outer_iter=50, inner_iter=100, init_lr=1e-2, 
+               h_tol=1e-8, w_threshold=0.3, use_gpu=False)
+```
 
-lambda1 (float):
-L1 penalty parameter. Controls the sparsity of the resulting graph.
+**Arguments:**
+- `X` (`np.ndarray`): Input data matrix of shape (n_samples, n_features).
+- `lambda1` (`float`): L1 regularization strength for sparsity.
+- `rho_init` (`float`): Initial penalty parameter for the augmented Lagrangian.
+- `alpha_init` (`float`): Initial value for the Lagrange multiplier.
+- `outer_iter` (`int`): Number of outer optimization iterations.
+- `inner_iter` (`int`): Number of inner Adam optimizer iterations per sub-problem.
+- `init_lr` (`float`): Initial learning rate for Adam optimizer.
+- `h_tol` (`float`): Tolerance for the acyclicity constraint.
+- `w_threshold` (`float`): Threshold for pruning weak edges in the adjacency matrix.
+- `use_gpu` (`bool`): If `True`, computation is performed on GPU (if available).
 
-rho_init (float):
-Initial value for the augmented Lagrangian penalty parameter.
+**Returns:**
+- `np.ndarray`: Estimated binary adjacency matrix of shape (n_features, n_features), where entry `[i, j] = 1` indicates a directed edge from node `i` to node `j`.
 
-w_threshold (float):
-Threshold for edge weights. Edges with an absolute weight below this value are pruned.
+**Description:**
+This function runs the linear NOTEARS algorithm to estimate the structure of a directed acyclic graph (DAG) from observational data. It uses continuous optimization and supports GPU acceleration for faster computation.
 
-use_gpu (bool):
-If True and CUDA is available, computations will be performed on the GPU for faster processing.
 
 📄 Citation
 
