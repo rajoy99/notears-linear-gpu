@@ -1,6 +1,6 @@
 Notears PyTorch
 
-<img src="logo_NTLGPU.png" alt="Notears PyTorch Logo" width="40"/>
+<img src="logo_NTLGPU.png" alt="Notears PyTorch Logo" width="140"/>
 A PyTorch implementation of the NOTEARS algorithm (Non-parametric Optimization for Structure Learning) for causal discovery.
 
 This package provides a continuous optimization approach to learning DAGs (Directed Acyclic Graphs) from data, harnessing the power of GPUs to accelerate the learning process.
